@@ -7,7 +7,7 @@
 module ConstantContact
   module Components
     class ContactList < Component
-      attr_accessor :id, :name, :status, :contact_count
+      attr_accessor :id, :name, :status, :contact_count, :created_date, :modified_date
 
       # Factory method to create a ContactList object from a json string
       # @param [Hash] props - properties to create object from
