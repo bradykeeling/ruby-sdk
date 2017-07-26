@@ -175,7 +175,7 @@ module ConstantContact
     # @param [ContactList] list - ContactList to update
     # @return [Boolean]
     def delete_list(list)
-      Services::ListService.delete_list(list)
+      @list_service.delete_list(list)
     end
 
     # Get contact that belong to a specific list
