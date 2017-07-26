@@ -171,6 +171,13 @@ module ConstantContact
     end
 
 
+    # Delete a contact list
+    # @param [ContactList] list - ContactList to update
+    # @return [Boolean]
+    def delete_list(list)
+      Services::ListService.delete_list(list)
+    end
+
     # Get contact that belong to a specific list
     # @param [Mixed] list - Integer id of the list or ContactList object
     # @param [Mixed] param - denotes the number of results per set, limited to 50, or a next parameter provided

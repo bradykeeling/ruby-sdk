@@ -71,6 +71,20 @@ describe ConstantContact::Services::ListService do
     end
   end
 
+  describe "#delete_list" do
+    it "deletes a list" do
+      json = load_file('list_response.json')
+      net_http_resp = Net::HTTPResponse.new(1.0, 204, 'OK')
+
+      response = RestClient::Response.create(json, net_http_resp, {}, @request)
+      RestClient.stub(:delete).and_return(response)
+      list = ConstantContact::Components::ContactList.create(JSON.parse(json))
+
+      result = ConstantContact::Services::ListService.delete_list(list)
+      result.should be_true
+    end
+  end
+
   describe "#get_contacts_from_list" do
     it "returns an array of contacts" do
       json_list = load_file('list_response.json')

@@ -46,6 +46,16 @@ module ConstantContact
         Components::ContactList.create(JSON.parse(response.body))
       end
 
+        # Delete a Contact List
+        # @param [ContactList] list - ContactList to be updated
+        # @return [Boolean]
+        def delete_list(list)
+          url = Util::Config.get('endpoints.base_url') + sprintf(Util::Config.get('endpoints.list'), list.id)
+          url = build_url(url)
+          payload = list.to_json
+          response = RestClient.delete(url, get_headers())
+          response.code == 204
+        end
 
       # Get an individual contact list
       # @param [Integer] list_id - list id
