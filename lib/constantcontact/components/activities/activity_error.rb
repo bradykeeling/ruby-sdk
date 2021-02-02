@@ -14,7 +14,7 @@ module ConstantContact
       # @return [ActivityError]
       def self.create(props)
         obj = ActivityError.new
-        if props
+        if props.present?
           props.each do |key, value|
             obj.send("#{key}=", value) if obj.respond_to? key
           end
